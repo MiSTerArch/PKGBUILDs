@@ -1,0 +1,32 @@
+# MiSTer base tools: MiSTer binary and menu.rbf
+# Maintainer: Alexandru M Stan <alex@hypertriangle.com>
+
+# Seems that MiSTer base tools are distributed in these 7z files uploaded to
+# https://github.com/MiSTer-devel/SD-Installer-Win64_MiSTer
+
+buildarch=4
+
+pkgbase=mister-release
+pkgname=("mister" "mister-menu")
+pkgver=20211112
+pkgrel=1
+arch=('armv7h')
+url='https://github.com/MiSTer-devel/Main_MiSTer/wiki'
+license=('GPL')
+_release=release_${pkgver}
+source=("https://github.com/MiSTer-devel/SD-Installer-Win64_MiSTer/raw/master/${_release}.7z")
+sha256sums=('975fad3a121f375881f1e97a0b4c7f29ff63787126c51390abab7802b8dd7e14')
+
+package_mister() {
+  pkgdesc="Userspace binary that manages MiSTer on the ARM side"
+
+  install -D files/MiSTer -m744 -t "${pkgdir}"/usr/bin
+
+  # TODO: verify location and add MiSTer.ini
+}
+
+package_mister-menu() {
+  pkgdesc="FPGA bitstream loaded by uboot which shows the MiSTer menu"
+
+  install -D files/menu.rbf "${pkgdir}"/boot/uboot.img
+}
