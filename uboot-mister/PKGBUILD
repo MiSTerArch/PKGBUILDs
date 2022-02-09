@@ -1,0 +1,56 @@
+# U-Boot: MiSTer
+# Maintainer: Alexandru M Stan <alex@hypertriangle.com>
+
+# https://github.com/MiSTer-devel/Main_MiSTer/wiki/Compiling-the-boot-loader-for-MiSTer
+
+buildarch=4
+
+pkgname=uboot-mister
+pkgver=20211112
+pkgrel=1
+pkgdesc="U-Boot for MiSTer"
+arch=('armv7h')
+url='https://github.com/MiSTer-devel/u-boot_MiSTer'
+license=('GPL')
+makedepends=('bc' 'dtc145' 'git')
+optdepends=('mister-menu: u-boot will look for a menu.rbf, might not boot otherwise')
+_commit=8dcc3484aac6f07314538e82530d446083085e12
+source=("https://github.com/MiSTer-devel/u-boot_MiSTer/archive/${_commit}.zip"
+        "https://releases.linaro.org/components/toolchain/binaries/5.5-2017.10/arm-linux-gnueabihf/gcc-linaro-5.5.0-2017.10-x86_64_arm-linux-gnueabihf.tar.xz"
+        '0001-libfdt-fix.patch')
+sha256sums=('f0a93bf1a0cf1a862ea47d923a1fb21829a479c7f2cda0f3c62e9989f0046162'
+            '952adfcd2359cac0e9ca7b9e95a2448dea0cb8c53f32c12835cbf219d0197278'
+            '2c6e2aada550e200a88eae455d6689da9ad5ca1f1fbe34dc6cb2b23a3558167d')
+
+prepare() {
+  cd u-boot_MiSTer-${_commit}
+
+  patch -p1 -i ../0001-libfdt-fix.patch
+  # TODO: another patch to remove the loop= in the kernel command line
+}
+
+build() {
+  cd u-boot_MiSTer-${_commit}
+
+  unset CFLAGS
+  unset CXXFLAGS
+  unset CPPFLAGS
+
+  # MiSTer warns that this is is the only compiler which will produce good results
+  export CROSS_COMPILE="${srcdir}/gcc-linaro-5.5.0-2017.10-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"
+
+  make distclean
+
+  make MiSTer_defconfig
+  echo 'CONFIG_IDENT_STRING=" Arch Linux ARM"' >> .config
+
+  make EXTRAVERSION=-${pkgrel}
+}
+
+package() {
+  cd u-boot_MiSTer-${_commit}
+
+  mkdir -p "${pkgdir}"/boot
+  cp u-boot-with-spl.sfp "${pkgdir}"/boot/uboot.img
+  # TODO: dd this to /dev/mmcblk0p2, maybe in a .install file
+}
