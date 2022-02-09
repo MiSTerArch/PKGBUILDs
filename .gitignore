@@ -1,0 +1,5 @@
+# Ignore everything that gets build
+*.zip
+src/
+pkg/
+*.pkg*
