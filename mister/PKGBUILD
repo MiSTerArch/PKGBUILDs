@@ -19,6 +19,7 @@ sha256sums=('975fad3a121f375881f1e97a0b4c7f29ff63787126c51390abab7802b8dd7e14')
 
 package_mister() {
   pkgdesc="Userspace binary that manages MiSTer on the ARM side"
+  optdepends=('linux-mister: MiSTer user probably needs custom kernel drivers')
 
   install -D files/MiSTer -m744 -t "${pkgdir}"/usr/bin
 

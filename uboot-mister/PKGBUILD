@@ -13,7 +13,8 @@ arch=('armv7h')
 url='https://github.com/MiSTer-devel/u-boot_MiSTer'
 license=('GPL')
 makedepends=('bc' 'dtc145' 'git')
-optdepends=('mister-menu: u-boot will look for a menu.rbf, might not boot otherwise')
+optdepends=('mister-menu: u-boot will look for a menu.rbf, might not boot otherwise'
+            'linux: need to boot a kernel')
 _commit=8dcc3484aac6f07314538e82530d446083085e12
 source=("https://github.com/MiSTer-devel/u-boot_MiSTer/archive/${_commit}.zip"
         "https://releases.linaro.org/components/toolchain/binaries/5.5-2017.10/arm-linux-gnueabihf/gcc-linaro-5.5.0-2017.10-x86_64_arm-linux-gnueabihf.tar.xz"
