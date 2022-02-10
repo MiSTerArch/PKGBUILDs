@@ -8,7 +8,7 @@ pkgbase=linux-mister
 _kernelname=${pkgbase#linux}
 _desc="MiSTer"
 pkgver=5.15
-pkgrel=2
+pkgrel=3
 arch=('armv7h')
 url="https://github.com/MiSTer-devel/Linux-Kernel_MiSTer"
 license=('GPL2')
@@ -21,7 +21,7 @@ source=("https://github.com/MiSTer-devel/Linux-Kernel_MiSTer/archive/e503d193c40
         'config')
 sha256sums=('c611e3753b4333e43569380f83c3590f619b27ab30a21ad302b3e290946e6582'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '2c2cf2e8dc9a3fb4b32e8556267e0fd1cf1b9e20f4128e56121a1f7b94c0d87d')
+            'f56135ae67dc3eac1a64227289890d8cc6c670569d656ca018299945e5fe3bc4')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
