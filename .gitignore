@@ -1,5 +1,10 @@
-# Ignore everything that gets build
+# source files downloaded from MiSTer releases
 *.zip
+*.7z
+*.rar
+*.rbf
+
+# Ignore everything that gets build
 src/
 pkg/
 *.pkg*
