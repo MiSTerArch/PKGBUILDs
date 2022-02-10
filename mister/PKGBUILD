@@ -7,27 +7,38 @@
 buildarch=4
 
 pkgbase=mister-release
-pkgname=("mister" "mister-menu")
+pkgname=("mister-bin" "mister-menu")
 pkgver=20211112
-pkgrel=1
+pkgrel=2
 arch=('armv7h')
 url='https://github.com/MiSTer-devel/Main_MiSTer/wiki'
 license=('GPL')
 _release=release_${pkgver}
-source=("https://github.com/MiSTer-devel/SD-Installer-Win64_MiSTer/raw/master/${_release}.7z")
-sha256sums=('975fad3a121f375881f1e97a0b4c7f29ff63787126c51390abab7802b8dd7e14')
+source=("https://github.com/MiSTer-devel/SD-Installer-Win64_MiSTer/raw/master/${_release}.7z"
+        'mister-bin.install'
+        'MiSTer.service')
+sha256sums=('975fad3a121f375881f1e97a0b4c7f29ff63787126c51390abab7802b8dd7e14'
+            'cab7d3dfc8b0fd15deaef00dd5931b66da3a59e721fba6f957de7f4a915b8c98'
+            '6f9a9a14420078c5fc5afeab364aba4a0be55992e95b897b913ed76e4fbe2971')
 
-package_mister() {
-  pkgdesc="Userspace binary that manages MiSTer on the ARM side"
-  optdepends=('linux-mister: MiSTer user probably needs custom kernel drivers')
+package_mister-bin() {
+  pkgdesc="Userspace binary that manages MiSTer on the ARM side, from the installer"
+  provides=("mister")
+  depends=("imlib2")
+  optdepends=('linux-mister: MiSTer userspace probably needs custom kernel drivers'
+              'mister-menu: MiSTer needs an FPGA core to talk to')
+  install=mister-bin.install
 
-  install -D files/MiSTer -m744 -t "${pkgdir}"/usr/bin
+  install files/MiSTer -m744 -Dt "${pkgdir}"/usr/bin
+  install MiSTer.service -Dt "${pkgdir}"/usr/lib/systemd/system
 
-  # TODO: verify location and add MiSTer.ini
+  mkdir -p "${pkgdir}"/media/fat
+
+  # TODO: add MiSTer.ini?
 }
 
 package_mister-menu() {
-  pkgdesc="FPGA bitstream loaded by uboot which shows the MiSTer menu"
+  pkgdesc="FPGA bitstream loaded by uboot which shows the MiSTer menu, from the installer"
 
-  install -D files/menu.rbf "${pkgdir}"/boot/uboot.img
+  install files/menu.rbf -Dt "${pkgdir}"/boot
 }

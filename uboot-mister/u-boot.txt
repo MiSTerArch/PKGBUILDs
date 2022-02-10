@@ -1,0 +1,2 @@
+# See https://github.com/MiSTer-devel/u-boot_MiSTer/blob/MiSTer/include/configs/socfpga_de10_nano.h for what loads this or what to override
+mmcboot=setenv bootargs console=ttyS0,115200 $v mem=511M memmap=513M$511M root=/dev/mmcblk0p3 rw rootwait loglevel=9;bootz $loadaddr - $fdt_addr

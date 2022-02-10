@@ -7,27 +7,27 @@ buildarch=4
 
 pkgname=uboot-mister
 pkgver=20211112
-pkgrel=1
+pkgrel=2
 pkgdesc="U-Boot for MiSTer"
 arch=('armv7h')
 url='https://github.com/MiSTer-devel/u-boot_MiSTer'
 license=('GPL')
 makedepends=('bc' 'dtc145' 'git')
-optdepends=('mister-menu: u-boot will look for a menu.rbf, might not boot otherwise'
-            'linux: need to boot a kernel')
+optdepends=('linux: need to boot a kernel')
 _commit=8dcc3484aac6f07314538e82530d446083085e12
 source=("https://github.com/MiSTer-devel/u-boot_MiSTer/archive/${_commit}.zip"
         "https://releases.linaro.org/components/toolchain/binaries/5.5-2017.10/arm-linux-gnueabihf/gcc-linaro-5.5.0-2017.10-x86_64_arm-linux-gnueabihf.tar.xz"
+        'u-boot.txt'
         '0001-libfdt-fix.patch')
 sha256sums=('f0a93bf1a0cf1a862ea47d923a1fb21829a479c7f2cda0f3c62e9989f0046162'
             '952adfcd2359cac0e9ca7b9e95a2448dea0cb8c53f32c12835cbf219d0197278'
+            '5be187f2280cc086d20b0603ddbd93dcee8b6653643f3a181286cf4e16ae3d5c'
             '2c6e2aada550e200a88eae455d6689da9ad5ca1f1fbe34dc6cb2b23a3558167d')
 
 prepare() {
   cd u-boot_MiSTer-${_commit}
 
   patch -p1 -i ../0001-libfdt-fix.patch
-  # TODO: another patch to remove the loop= in the kernel command line
 }
 
 build() {
@@ -49,9 +49,12 @@ build() {
 }
 
 package() {
+  backup=("boot/linux/u-boot.txt")
+
   cd u-boot_MiSTer-${_commit}
 
-  mkdir -p "${pkgdir}"/boot
-  cp u-boot-with-spl.sfp "${pkgdir}"/boot/uboot.img
+  install u-boot-with-spl.sfp -D "${pkgdir}"/boot/uboot.img
+  install ../u-boot.txt -Dt "${pkgdir}"/boot/linux/
+
   # TODO: dd this to /dev/mmcblk0p2, maybe in a .install file
 }
