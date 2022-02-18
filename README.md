@@ -12,6 +12,13 @@ Also, any modifications you make to the OS might be lost come update time.
 I want to be able to run Arch on my MiSTer! If you want to do the same
 this project is for you.
 
+## Community
+
+Chat with other MiSTerArch users on:
+
+* Matrix: [#MiSTerArch:hypertriangle.com](https://matrix.to/#/#MiSTerArch:hypertriangle.com)
+* IRC: irc://irc.libera.chat/MiSTerArch ([webchat](https://web.libera.chat/#MiSTerArch))
+
 ## Packages
 
 This repository contains the arch packages required to run the MiSTer hardware.
