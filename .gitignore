@@ -8,3 +8,6 @@
 src/
 pkg/
 *.pkg*
+
+# aur git repos that are automatically managed
+aur/
