@@ -12,6 +12,8 @@ Also, any modifications you make to the OS might be lost come update time.
 I want to be able to run Arch on my MiSTer! If you want to do the same
 this project is for you.
 
+[**Installation Instructions**](INSTALL.md)
+
 ## Community
 
 Chat with other MiSTerArch users on:
@@ -29,16 +31,11 @@ and there should be no need to run MiSTer's update scripts.
 
 ### Binaries
 
-**BETA!!!** Complete builds of these packages can be found in the `binaries`
+Complete builds of these packages can be found in the `binaries`
 branch of this repo. It's also served with gh-pages, which means it
 can be directly added as a repo in `/etc/pacman.conf` so your MiSTer knows
-where to get MiSTerArch packages automatically at update time:
-
-```
-[misterarch]
-SigLevel = Optional TrustedOnly
-Server = https://amstan.github.io/MiSTerArch/
-```
+where to get MiSTerArch packages automatically at update time. See
+[installation instructions](INSTALL.md#repository-setup) for how.
 
 ### AUR
 Some binary packages that are easy to "build" on a MiSTer (ex:

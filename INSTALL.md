@@ -1,3 +1,5 @@
+# Installation Instructions
+
 ## Building
 
 All of these PKGBUILDs can be built using x86 arch:
@@ -49,3 +51,15 @@ Boot and install the .pkg files properly with `pacman -U`, you might need
 
 TODO: All of these install steps might come soon to an
 [ansible script](https://github.com/amstan/alarm-ansible) near you.
+
+## Repository setup
+
+Add another paragraph to `/etc/pacman.conf`:
+
+```
+[misterarch]
+SigLevel = Optional TrustedOnly
+Server = http://misterarch.hypertriangle.com/repo
+```
+
+This way any updates to mister arch packages are just a `pacman -Syu` away.
