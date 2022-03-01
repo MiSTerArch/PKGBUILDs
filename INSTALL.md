@@ -28,7 +28,8 @@ You need to grab a generic
 and unpack it into the rootfs.
 
 You need to manually grab the contents of the `uboot-mister` and `linux-mister`
-packages and put them properly in the `/boot` partition.
+[packages](https://github.com/amstan/MiSTerArch/tree/binaries/repo) and put them
+properly in the `/boot` partition.
 
 `dd if=/boot/uboot.img` into the 3MB partition. This is what the de10 board looks
 for in order to start the bootloader.
@@ -36,6 +37,13 @@ for in order to start the bootloader.
 Edit `/boot/linux/u-boot.txt` to change the kernel cmdline if your root
 partition is not `/dev/mmcblk0p3`. You probably want to do this if you want
 your rootfs to be on a USB HD, or even NFS.
+
+At this point you can boot. You can check the USB console if you're not sure
+of what it's doing.
+
+Login with username: `alarm`, password: `alarm`. You can change this password,
+or create another user if you want. The openssh server starts at first boot as
+well, it will also generate its own server keys, to maintain privacy.
 
 Configure your `/etc/fstab` to include the `/boot` partition
 ([genfstab](https://man.archlinux.org/man/genfstab.8) might help here).
@@ -45,12 +53,6 @@ otherwise any kernel updates will not be applied properly:
 ```
 LABEL=BOOT /boot vfat rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro 0 2
 ```
-
-Boot and install the .pkg files properly with `pacman -U`, you might need
-`--overwrite "*"` for the files you manually added earlier
-
-TODO: All of these install steps might come soon to an
-[ansible script](https://github.com/amstan/alarm-ansible) near you.
 
 ## Repository setup
 
@@ -62,4 +64,11 @@ SigLevel = Optional TrustedOnly
 Server = http://misterarch.hypertriangle.com/repo
 ```
 
-This way any updates to mister arch packages are just a `pacman -Syu` away.
+At this point you can install the mister packages provided by this project:
+
+```
+pacman -Syu uboot-mister linux-mister mister-bin mister-menu --overwrite "*"
+```
+
+In the future all it would take is an invocation of `pacman -Syu` to get both
+arch linux and mister updates (for the stuff this project has packaged).
