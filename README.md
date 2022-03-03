@@ -14,6 +14,8 @@ this project is for you.
 
 [**Installation Instructions**](INSTALL.md)
 
+![Screenshot of a terminal with archey3, pacman package list and systemctl status MiSTer](doc/screenshot_ssh.png)
+
 ## Community
 
 Chat with other MiSTerArch users on:
