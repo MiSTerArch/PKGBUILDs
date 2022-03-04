@@ -67,8 +67,12 @@ Server = http://misterarch.hypertriangle.com/repo
 At this point you can install the mister packages provided by this project:
 
 ```
-pacman -Syu uboot-mister linux-mister mister-bin mister-menu --overwrite "*"
+pacman -Syu uboot-mister linux-mister mister-bin mister-menu
 ```
+
+You want to use the `--overwrite "/boot/*"` argument as well for the first
+pacman invocation to not conflict with the manually placed files in /boot from
+the earlier steps.
 
 In the future all it would take is an invocation of `pacman -Syu` to get both
 arch linux and mister updates (for the stuff this project has packaged).
