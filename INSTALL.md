@@ -28,7 +28,7 @@ You need to grab a generic
 and unpack it into the rootfs.
 
 You need to manually grab the contents of the `uboot-mister` and `linux-mister`
-[packages](https://github.com/amstan/MiSTerArch/tree/binaries/repo) and put them
+[packages](https://github.com/MiSTerArch/binaries/tree/binaries/repo) and put them
 properly in the `/boot` partition.
 
 `dd if=/boot/uboot.img` into the 3MB partition. This is what the de10 board looks

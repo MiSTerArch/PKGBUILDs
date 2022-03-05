@@ -33,8 +33,8 @@ and there should be no need to run MiSTer's update scripts.
 
 ### Binaries
 
-Complete builds of these packages can be found in the `binaries`
-branch of this repo. It's also served with gh-pages, which means it
+Complete builds of these packages can be found in the [binaries](https://github.com/MiSTerArch/binaries)
+repo of this org. It's also served with gh-pages, which means it
 can be directly added as a repo in `/etc/pacman.conf` so your MiSTer knows
 where to get MiSTerArch packages automatically at update time. See
 [installation instructions](INSTALL.md#repository-setup) for how.

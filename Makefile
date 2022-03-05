@@ -24,7 +24,7 @@ CROSS_COMPILE ?= /usr/local/x-tools7h/arm-unknown-linux-gnueabihf/bin/
 	cat .gitignore > $*/aur/.gitignore
 
 	# generate original.commit file
-	echo >$*/aur/original.commit "This is an automatically generated copy of the package, originally from https://github.com/amstan/MiSTerArch:"
+	echo >$*/aur/original.commit "This is an automatically generated copy of the package, originally from https://github.com/MiSTerArch/PKGBUILDs:"
 	git log -n1 $* >> $*/aur/original.commit
 
 	# add and commit
