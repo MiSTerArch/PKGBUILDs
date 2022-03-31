@@ -61,8 +61,9 @@ use `/media/fat` as a case-insensitive location for doing everything.
 
 For now this path's contents is under the user's control. One can even mount
 an old style exfat partition using `/etc/fstab`. For now `mister-bin`'s
-post-install hook has a suggestion on how to populate things in Mister by
-cloning [Distribution_MiSTer](https://github.com/MiSTer-devel/Distribution_MiSTer).
+[post-install hook](https://github.com/MiSTerArch/PKGBUILDs/blob/main/mister-bin/mister-bin.install)
+has a suggestion on how to populate things in Mister by cloning
+[Distribution_MiSTer](https://github.com/MiSTer-devel/Distribution_MiSTer).
 
 There's a couple of other techniques that might be of interest here:
 
