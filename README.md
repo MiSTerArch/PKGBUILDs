@@ -1,5 +1,7 @@
 # MiSTer + Arch Linux ARM
 
+![MisterArch Logo: A blue arch coming out of a cloud](doc/misterarch_logo.png)
+
 I found out about [MiSTer](https://github.com/MiSTer-devel/Main_MiSTer/wiki)
 via [LGR's MiSTer Multisystem video](https://www.youtube.com/watch?v=qx45r-BRHxY),
 since then I've been enjoying it very much.
