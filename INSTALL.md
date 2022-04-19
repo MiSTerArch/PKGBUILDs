@@ -16,9 +16,9 @@ should grab it automatically into the local `src/` folder.
 
 ## Installing
 
-You need an SD card, format it msdos, then partition it:
+You need an SD card, create a empty msdos table, then partition it:
 
-* `/boot`, fat32, 500ish MB
+* `/boot`, fat32 (type b), 500ish MB
 * u-boot-with-spl, [partition type](https://unix.stackexchange.com/questions/508890/how-to-change-partition-type-id-without-formatting) `a2`, 3MB
 * rootfs and any other partitions you want. These can all be `ext4` or
   even `btrfs`.
@@ -27,7 +27,7 @@ You need to grab a generic
 [ArchLinuxARM-armv7-latest.tar.gz](http://fl.us.mirror.archlinuxarm.org/os/ArchLinuxARM-armv7-latest.tar.gz)
 and unpack it into the rootfs.
 
-You need to manually grab the contents of the `uboot-mister` and `linux-mister`
+You need to manually grab the contents of the `uboot-mister` (all files) and `linux-mister` (only what is in /boot)
 [packages](https://github.com/MiSTerArch/binaries/tree/binaries/repo) and put them
 properly in the `/boot` partition.
 
@@ -38,7 +38,7 @@ Edit `/boot/linux/u-boot.txt` to change the kernel cmdline if your root
 partition is not `/dev/mmcblk0p3`. You probably want to do this if you want
 your rootfs to be on a USB HD, or even NFS.
 
-At this point you can boot. You can check the USB console if you're not sure
+At this point you can boot. You must check the USB console if you're not sure
 of what it's doing.
 
 Login with username: `alarm`, password: `alarm`. You can change this password,
