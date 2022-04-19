@@ -8,20 +8,20 @@ pkgbase=linux-mister
 _kernelname=${pkgbase#linux}
 _desc="MiSTer"
 pkgver=5.15
-pkgrel=5
+pkgrel=6
 arch=('armv7h')
 url="https://github.com/MiSTer-devel/Linux-Kernel_MiSTer"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
-_commit=e503d193c400415db584a1b4d8445d7edcbb021c
+_commit=e82a592804f44f50e3437d9cf9bc626ed2bbd504
 _srcname=Linux-Kernel_MiSTer-${_commit}
-source=("https://github.com/MiSTer-devel/Linux-Kernel_MiSTer/archive/e503d193c400415db584a1b4d8445d7edcbb021c.zip"
+source=("https://github.com/MiSTer-devel/Linux-Kernel_MiSTer/archive/${_commit}.zip"
         '60-linux.hook'
         'config')
-sha256sums=('c611e3753b4333e43569380f83c3590f619b27ab30a21ad302b3e290946e6582'
+sha256sums=('19137b739278157eebb1e55501177e0616833c2fa3720a2dad4411f52009b686'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '016a13cbf8fe4f74aa550e87a6706750a6dc30ee23fe010bd4eedbc47c8f5613')
+            '166e62fa69d6837da16064d18754de1f251a665ebb4d97dc05ab66a7d1328195')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
