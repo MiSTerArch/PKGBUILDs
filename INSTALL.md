@@ -1,6 +1,54 @@
 # Installation Instructions
 
-## Building
+## Using the prebuilt image
+
+From time to time I automatically build a complete SD card
+image, that image can be easily updated to latest once it's booted.
+
+You can download it from https://github.com/MiSTerArch/binaries/releases/latest.
+After unpacking you can just dd it to an sd card, or perhaps use your favorite
+[etcher](https://www.balena.io/etcher/) like tool if you're afraid of
+erasing your hard drive.
+
+```bash
+wget https://github.com/MiSTerArch/binaries/releases/latest/download/MiSTerArch.img.tar.gz
+tar xf MiSTerArch.img.tar.gz
+dd if=MiSTerArch.img of=/dev/mmcblk0 bs=1M status=progress
+sync
+```
+
+Plug the SD card in the DE10 board and after a couple of minutes mister-bin
+should be showing on the HDMI.
+
+You can complete the setup (including expanding to fill the whole SD
+card) by running `finish_misterarch_install.sh` either via SSH or via
+the Scripts/ menu in the GUI (press ESC). At the end it will provide a
+suggestion on how to fill your [/media/fat](https://github.com/MiSTerArch/PKGBUILDs/blob/main/README.md#mediafat)
+directory.
+
+After running `finish_misterarch_install.sh` you should reboot as there's
+probably updates you want to reload.
+You should do this **nicely** from the console using `sudo reboot`,
+either via SSH or from the menu by pressing F6, not just by power cycling.
+
+SSH is enabled by default. Login with username: `alarm`, password: `alarm`.
+Root is accessible with sudo.
+
+### "Preferences" the prebuilt image comes with
+
+Besides the MiSTer stuff, here are some differences from vanilla Arch Linux ARM:
+
+* python
+* base-devel
+* networkmanager, use `nmtui` to configure it
+* btrfs, `root/` as a subvolume allows easy snapshotting in the future
+* pikaur [AUR](https://wiki.archlinux.org/title/Arch_User_Repository) helper
+
+## From Scratch
+
+If you want to get a more custom experience, you can start from scratch:
+
+### Building
 
 All of these PKGBUILDs can be built using x86 arch:
 
@@ -14,7 +62,7 @@ x-tools7h from the [Arch Linux ARM Cross-Compiling instructions](https://archlin
 Some (uboot) might need a specialized cross-compiler, but the PKGBUILD
 should grab it automatically into the local `src/` folder.
 
-## Installing
+### Installing
 
 You need an SD card, create a empty msdos table, then partition it:
 
@@ -66,7 +114,7 @@ pacman-key --init && pacman-key --populate archlinuxarm
 Upstream x86 Arch also has quite a detailed article for [general recommendations after installation](https://wiki.archlinux.org/title/General_recommendations).
 Some tips in there might be useful even for a MisterArch setup.
 
-## MisterArch repository setup
+### MisterArch repository setup
 
 Add another paragraph to `/etc/pacman.conf`:
 
