@@ -1,0 +1,24 @@
+#!/bin/bash
+# MiSTerArch wrapper for Downloader_MiSTer
+# We're going to call __main__.py directly and not call upstream's download.sh
+# or dontdownload.sh so we bypass the meta updater updating.
+
+if [ $# == 0 ]; then
+    echo "Usage: $0 base_path [tags]"
+    echo "* base_path: location you want to install stuff in, perhaps /media/fat/"
+    echo "* tags: filter what to download. See https://github.com/MiSTer-devel/Distribution_MiSTer#tags-that-you-may-use-with-download-filters-feature"
+    exit 1
+fi
+
+export COMMIT="misterarch-INSERT_pkgver_HERE"
+
+export DEFAULT_BASE_PATH="$1"
+export DEBUG=true # Allows us to use non /media/ paths
+
+export CURL_SSL="" # on Arch curl has sane SSL defaults, no need to override them
+
+export UPDATE_LINUX=false # Managed by pacman
+export ALLOW_REBOOT=0 # This decision needs to happen at a higher level/user
+
+shift
+DOWNLOADER_INI_PATH=<(echo "[mister]"; echo "filter=$@ !essential !linux") /usr/lib/mister-downloader/__main__.py

@@ -1,0 +1,36 @@
+# Downloader_MiSTer
+# Maintainer: Alexandru M Stan <alex@hypertriangle.com>
+
+# This would normally have a -git suffix to conform to Arch guidelines,
+# but upstream's release process involves auto-updating to the latest version
+# every execution anyway, so it's not like there exists a non "-git" version,
+# so let's just simplify the name!
+
+buildarch=4
+
+pkgname=mister-downloader
+pkgver=r112.gc02ec68
+pkgrel=1
+pkgdesc="Tool to install and update all the cores and other extra files for your MiSTer"
+arch=('any') # This can be installed on x86 arch too!
+url='https://github.com/MiSTer-devel/Downloader_MiSTer'
+_repo_name=Downloader_MiSTer
+license=('GPL3')
+depends=("zip" "unzip" "curl")
+source=("git+https://github.com/MiSTer-devel/Downloader_MiSTer.git"
+        "mister-downloader")
+sha256sums=('SKIP'
+            '3f3257b96a879e234fb9f79515679df4f2a79e7a18fe936327e1399cb20bf56e')
+
+pkgver() {
+  cd "$srcdir/$_repo_name"
+  git describe --long --tags | sed 's/^latest-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+package() {
+	install -D "$_repo_name/src/__main__.py" -t "${pkgdir}/usr/lib/mister-downloader"
+	cp -r "$_repo_name/src/downloader/" "${pkgdir}/usr/lib/mister-downloader"
+
+	install -Dm755 mister-downloader -t "${pkgdir}/usr/bin/"
+	sed -i "s/INSERT_pkgver_HERE/$pkgver/g" "${pkgdir}/usr/bin/mister-downloader"
+}
