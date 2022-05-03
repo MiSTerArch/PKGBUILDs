@@ -21,7 +21,7 @@ source=("https://github.com/MiSTer-devel/Linux-Kernel_MiSTer/archive/${_commit}.
         'config')
 sha256sums=('19137b739278157eebb1e55501177e0616833c2fa3720a2dad4411f52009b686'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '166e62fa69d6837da16064d18754de1f251a665ebb4d97dc05ab66a7d1328195')
+            'ce5e368cde88a98d2d3a8151c58b67998878c0d43898f72e78848fe574e6448c')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
