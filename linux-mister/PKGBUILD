@@ -8,7 +8,7 @@ pkgbase=linux-mister
 _kernelname=${pkgbase#linux}
 _desc="MiSTer"
 pkgver=5.15
-pkgrel=6
+pkgrel=7
 arch=('armv7h')
 url="https://github.com/MiSTer-devel/Linux-Kernel_MiSTer"
 license=('GPL2')
@@ -78,6 +78,7 @@ _package() {
   cd "${srcdir}/${_srcname}"
 
   KARCH=arm
+  ARCH=arm
 
   # get kernel version
   _kernver="$(make kernelrelease)"
