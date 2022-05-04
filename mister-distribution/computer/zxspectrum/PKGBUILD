@@ -1,0 +1,4 @@
+pkgver=20220216
+pkgrel=1
+_mister_downloader_extra_tags="spectrum"
+source "${BASH_SOURCE%/*}/../../../mister-distribution-template/PKGBUILD"

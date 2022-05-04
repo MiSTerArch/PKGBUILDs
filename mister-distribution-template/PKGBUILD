@@ -1,0 +1,45 @@
+#
+# Maintainer: Alexandru M Stan <alex@hypertriangle.com>
+
+# TODO: Autogenerate this file
+
+buildarch=4
+
+# look at the caller path and extract the folder(aka name) and
+# parent folder (aka category).
+_caller=$(caller|cut -d ' ' -f 2-)
+_name=$(basename "$(dirname "$_caller")")
+_category=$(basename "$(dirname "$(dirname "$_caller")")")
+pkgname=mister-$_category-$_name
+
+#pkgver # inside each file, automatically updated
+#pkgrel # inside each file
+
+pkgdesc=""
+arch=('any')
+url='https://github.com/MiSTer-devel/Distribution_MiSTer'
+license=('GPL3')
+
+makedepends=('mister-downloader')
+_mister_downloader_tags="${_name} ${_mister_downloader_extra_tags}"
+source=()
+
+prepare() {
+  # Do most of the stuff here, since we only know the version after it's updated
+  mister-downloader "$srcdir"/"${pkgname}" ${_mister_downloader_tags}
+
+  rm -Rf "$srcdir"/"${pkgname}"/Scripts/
+}
+
+pkgver() {
+  ls "$srcdir"/"${pkgname}"/_*/ | sed -E "s/[^_]+_(.*)\.rbf/\1/"
+}
+
+package() {
+  #TODO: change from /media/fat
+  dest="${pkgdir}"/media/fat
+
+  mkdir -p $dest
+
+  cp -R "$srcdir"/"${pkgname}" "$dest"
+}
