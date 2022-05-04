@@ -16,7 +16,7 @@ arch=('armv7h')
 provides=('mister')
 conflicts=('mister')
 url='https://github.com/MiSTer-devel/Main_MiSTer/'
-license=('GPL')
+license=('GPL3')
 depends=("imlib2" "bluez-libs")
 optdepends=('linux-mister: MiSTer userspace probably needs custom kernel drivers'
             'mister-menu: MiSTer needs an FPGA core to talk to')
