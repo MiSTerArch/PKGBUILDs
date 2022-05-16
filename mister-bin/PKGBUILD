@@ -9,7 +9,7 @@
 buildarch=4
 
 pkgname=mister-bin
-pkgver=20220413
+pkgver=20220511
 pkgrel=1
 pkgdesc="Userspace binary that manages MiSTer on the ARM side, prebuilt"
 arch=('armv7h')
@@ -24,7 +24,7 @@ source=("https://github.com/MiSTer-devel/Main_MiSTer/raw/master/releases/MiSTer_
         'mister-bin.install'
         'MiSTer.service'
         'tmpfiles.d')
-sha256sums=('565c2a9b711f52a7e8805c5629c81ff71548a2ad27cd5673f645dafea0d2aaa3'
+sha256sums=('94c8d134b2f1f3cb3f5f4eae81aa8e36bbbb3e83500086f78a7153769431caba'
             'cab7d3dfc8b0fd15deaef00dd5931b66da3a59e721fba6f957de7f4a915b8c98'
             '6f9a9a14420078c5fc5afeab364aba4a0be55992e95b897b913ed76e4fbe2971'
             '4e786d340f81762878251e02288630beb7e6caa0ec8a7d7f9e13a5dcdb96f342')
