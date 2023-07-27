@@ -1,8 +1,9 @@
 CROSS_COMPILE ?= /usr/local/x-tools7h/arm-unknown-linux-gnueabihf/bin/
+PKGDEST ?= $(realpath .)/../binaries/repo/
 
 .PHONY: %.pkg
 %.pkg: %/PKGBUILD
-	cd $*; CROSS_COMPILE=${CROSS_COMPILE} ARCH='arm' CARCH="armv7h" makepkg -s
+	cd $*; CROSS_COMPILE=${CROSS_COMPILE} PKGDEST=${PKGDEST} ARCH='arm' CARCH="armv7h" makepkg -s
 # BUG: linux-mister package fails with this invocation
 
 .PRECIOUS: %/aur
