@@ -8,20 +8,20 @@ pkgbase=linux-mister
 _kernelname=${pkgbase#linux}
 _desc="MiSTer"
 pkgver=5.15
-pkgrel=6
+pkgrel=7
 arch=('armv7h')
 url="https://github.com/MiSTer-devel/Linux-Kernel_MiSTer"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
-_commit=e82a592804f44f50e3437d9cf9bc626ed2bbd504
+_commit=77862a67f4bba402e3106bd157dbf93de1e8ce28
 _srcname=Linux-Kernel_MiSTer-${_commit}
 source=("https://github.com/MiSTer-devel/Linux-Kernel_MiSTer/archive/${_commit}.zip"
         '60-linux.hook'
         'config')
-sha256sums=('19137b739278157eebb1e55501177e0616833c2fa3720a2dad4411f52009b686'
+sha256sums=('afc52b96f21773512f7208f3de9ac4e66584864d8b9b0075aa76dc3a3ec57caf'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '166e62fa69d6837da16064d18754de1f251a665ebb4d97dc05ab66a7d1328195')
+            '7c1c49f0a503862fc7a7911f7bf3639ba1e1088aaa3f009f3d03ab161af5f834')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
