@@ -23,7 +23,6 @@ this project is for you.
 Chat with other MiSTerArch users on:
 
 * Matrix: [#MiSTerArch:hypertriangle.com](https://matrix.to/#/#MiSTerArch:hypertriangle.com)
-* IRC: irc://irc.libera.chat/MiSTerArch ([webchat](https://web.libera.chat/#MiSTerArch))
 
 ## Packages
 
